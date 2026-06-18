@@ -1,89 +1,265 @@
-# ambient-expense-agent
+# 💰 Ambient Expense Agent using Google ADK 2.0
 
-Simple ReAct agent
-Agent generated with `agents-cli` version `0.5.0`
+An AI-powered expense approval workflow built using **Google Agent Development Kit (ADK) 2.0** and **Gemini**. The agent automatically approves low-value expense claims and routes higher-value claims to a **Human-in-the-Loop (HITL)** approval workflow using a graph-based architecture.
 
-## Project Structure
-
-```
-ambient-expense-agent/
-├── app/         # Core agent code
-│   ├── agent.py               # Main agent logic
-│   ├── agent_runtime_app.py    # Agent Runtime application logic
-│   └── app_utils/             # App utilities and helpers
-├── tests/                     # Unit, integration, and load tests
-├── GEMINI.md                  # AI-assisted development guide
-└── pyproject.toml             # Project dependencies
-```
-
-> 💡 **Tip:** Use [Gemini CLI](https://github.com/google-gemini/gemini-cli) for AI-assisted development - project context is pre-configured in `GEMINI.md`.
-
-## Requirements
-
-Before you begin, ensure you have:
-- **uv**: Python package manager (used for all dependency management in this project) - [Install](https://docs.astral.sh/uv/getting-started/installation/) ([add packages](https://docs.astral.sh/uv/concepts/dependencies/) with `uv add <package>`)
-- **agents-cli**: Agents CLI - Install with `uv tool install google-agents-cli`
-- **Google Cloud SDK**: For GCP services - [Install](https://cloud.google.com/sdk/docs/install)
-
-
-## Quick Start
-
-Install `agents-cli` and its skills if not already installed:
-
-```bash
-uvx google-agents-cli setup
-```
-
-Install required packages:
-
-```bash
-agents-cli install
-```
-
-Test the agent with a local web server:
-
-```bash
-agents-cli playground
-```
-
-You can also use features from the [ADK](https://adk.dev/) CLI with `uv run adk`.
-
-## Commands
-
-| Command              | Description                                                                                 |
-| -------------------- | ------------------------------------------------------------------------------------------- |
-| `agents-cli install` | Install dependencies using uv                                                         |
-| `agents-cli playground` | Launch local development environment                                                  |
-| `agents-cli lint`    | Run code quality checks                                                               |
-| `agents-cli eval`    | Evaluate agent behavior (generate, grade, analyze, and more — see `agents-cli eval --help`) |
-| `uv run pytest tests/unit tests/integration` | Run unit and integration tests                                                        |
-| `agents-cli deploy`  | Deploy agent to Agent Runtime                                                                |
-| `agents-cli publish gemini-enterprise` | Register deployed agent to Gemini Enterprise                    |
-
-## 🛠️ Project Management
-
-| Command | What It Does |
-|---------|--------------|
-| `agents-cli scaffold enhance` | Add CI/CD pipelines and Terraform infrastructure |
-| `agents-cli infra cicd` | One-command setup of entire CI/CD pipeline + infrastructure |
-| `agents-cli scaffold upgrade` | Auto-upgrade to latest version while preserving customizations |
+> **Project Context**
+>
+> This project was built during **Kaggle's 5-Day Intensive Vibe Coding: Building 10x AI Agents** course by Google. The project was created using a **vibe coding workflow** with Antigravity IDE and Google Agents CLI while learning the Google ADK ecosystem.
+>
+> The objective of this project was to understand:
+> - Google ADK 2.0
+> - Graph-based AI Workflows
+> - Human-in-the-Loop Agents
+> - Gemini-powered AI Agents
+> - AI Agent development lifecycle
 
 ---
 
-## Development
+# 🚀 Features
 
-Edit your agent logic in `app/agent.py` and test with `agents-cli playground` - it auto-reloads on save.
+- 🤖 Google ADK 2.0 Graph Workflow
+- 🧠 Gemini-powered Expense Information Extraction
+- 💵 Automatic approval for expenses below **$100**
+- 👨‍💼 Human-in-the-Loop review for expenses **$100 and above**
+- 🔄 Resumable workflow using `RequestInput`
+- 📋 Structured outputs using Pydantic Models
+- ✅ Local testing using ADK Web UI
 
-## Deployment
+---
 
-```bash
-gcloud config set project <your-project-id>
-agents-cli deploy
+# 🏗 Workflow
+
+```text
+User Expense
+
+        │
+        ▼
+
+ Gemini Extractor Agent
+
+        │
+        ▼
+
+ Expense Classifier
+
+      /       \
+
+< $100      >= $100
+
+   │             │
+
+Auto          Human Review
+
+Approve       (RequestInput)
+
+      \       /
+
+        ▼
+
+ Final Decision
 ```
 
-To add CI/CD and Terraform, run `agents-cli scaffold enhance`.
-To set up your production infrastructure, run `agents-cli infra cicd`.
+---
 
-## Observability
+# 🛠 Tech Stack
 
-Built-in telemetry exports to Cloud Trace, BigQuery, and Cloud Logging.
+- Python
+- Google ADK 2.0
+- Google Gemini
+- Google Agents CLI
+- Pydantic
+- FastAPI (ADK Runtime)
+- Antigravity IDE
+
+---
+
+# 📂 Project Structure
+
+```
+ambient-expense-agent
+│
+├── app
+│   ├── agent.py
+│   ├── __init__.py
+│   └── app_utils
+│
+├── deployment
+├── tests
+├── README.md
+├── pyproject.toml
+└── uv.lock
+```
+
+---
+
+# 🧠 How it Works
+
+### Step 1
+
+The user submits an expense in natural language.
+
+Example:
+
+```
+I had lunch with a client yesterday. The expense was $45.
+```
+
+---
+
+### Step 2
+
+Gemini extracts structured information:
+
+```json
+{
+  "amount": 45,
+  "description": "Lunch with client"
+}
+```
+
+---
+
+### Step 3
+
+The classifier evaluates the amount.
+
+- Expense < $100 → Auto Approved
+- Expense ≥ $100 → Manual Review
+
+---
+
+### Step 4
+
+For higher-value claims, the workflow pauses and requests human approval using **RequestInput**.
+
+---
+
+### Step 5
+
+The workflow resumes and returns the final approval or rejection.
+
+---
+
+# 📸 Screenshots
+
+Add your screenshots here.
+
+- Home Screen
+- Auto Approval
+- Human Review
+- Final Approval / Rejection
+
+---
+
+# ▶️ Running the Project
+
+Clone the repository
+
+```bash
+git clone <your-repository-url>
+```
+
+Navigate into the project
+
+```bash
+cd ambient-expense-agent
+```
+
+Install dependencies
+
+```bash
+uv sync
+```
+
+Set your Gemini API Key
+
+Create a `.env` file:
+
+```env
+GOOGLE_API_KEY=YOUR_API_KEY
+```
+
+Run the application
+
+```bash
+uv run adk web
+```
+
+Open:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+# 🧪 Example Test Cases
+
+### Auto Approval
+
+Input
+
+```
+I had lunch with a client yesterday. The expense was $45.
+```
+
+Result
+
+```
+APPROVED
+```
+
+---
+
+### Human Review
+
+Input
+
+```
+Business trip hotel cost $250.
+```
+
+Result
+
+```
+Manager Approval Required
+```
+
+Manager
+
+```
+yes
+```
+
+Final
+
+```
+APPROVED
+```
+
+---
+
+# 📚 Learning Outcomes
+
+Through this project I learned:
+
+- Building AI Agents with Google ADK 2.0
+- Designing Graph-based Agent Workflows
+- Human-in-the-Loop AI Systems
+- Gemini Integration
+- Prompt-driven AI Development
+- AI Agent Testing using ADK Web
+
+---
+
+# 📌 Notes
+
+This project was created as part of the **Kaggle 5-Day Intensive Vibe Coding: Building 10x AI Agents** course.
+
+The implementation was generated using a **vibe coding workflow** with Antigravity IDE and Google Agents CLI as part of the learning experience. The project was then configured, executed, debugged, tested, and validated locally to understand the complete AI agent development workflow.
+
+---
+
+# 📄 License
+
+This project is intended for educational and portfolio purposes.
