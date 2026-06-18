@@ -141,6 +141,11 @@ The workflow resumes and returns the final approval or rejection.
 ---
 
 # 📸 Screenshots
+<img width="1917" height="1020" alt="cli setup-adding adk skills" src="https://github.com/user-attachments/assets/83129a6e-aded-43e1-9ca0-4ee140faa49a" />
+<img width="1917" height="652" alt="running adk web ui " src="https://github.com/user-attachments/assets/20b8dd81-e5a2-4cb8-87cf-b4a7a41461ea" />
+<img width="1917" height="972" alt="Case1" src="https://github.com/user-attachments/assets/e9d3e478-d4bd-4819-83b6-adbcde373a0d" />
+<img width="1917" height="876" alt="Case2-yes" src="https://github.com/user-attachments/assets/eed8044f-7899-4a4b-a366-6874bbd3b558" />
+<img width="1917" height="876" alt="Case2-no" src="https://github.com/user-attachments/assets/eae70d0e-f116-43fb-a1ba-db442a8ccbb2" />
 
 # ▶️ Running the Project
 
