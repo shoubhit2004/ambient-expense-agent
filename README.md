@@ -144,12 +144,6 @@ The workflow resumes and returns the final approval or rejection.
 
 Add your screenshots here.
 
-<img width="1917" height="972" alt="Case1" src="https://github.com/user-attachments/assets/a75817cb-fb15-4fb3-ae58-03ff0ad8ef9c" /><img width="810" height="542" alt="workflow" src="https://github.com/user-attachments/assets/dfa6e4b7-f90c-4ccd-bb1e-0bd8e3d4af33" />
-<img width="1917" height="652" alt="running adk web ui " src="https://github.com/user-attachments/assets/407959df-bd98-47b1-8056-a0c5b8e4111a" />
-<img width="1917" height="970" alt="google cloud console" src="https://github.com/user-attachments/assets/eb22de2c-8ab2-44f6-a1fe-22bf28797e99" />
-<img width="1917" height="1020" alt="cli setup-adding adk skills" src="https://github.com/user-attachments/assets/e850d87a-3784-4c3c-bda6-c5f5e1b236d0" />
-<img width="1917" height="876" alt="Case2-yes" src="https://github.com/user-attachments/assets/bb108baa-7081-433c-aa4f-0c22a2981e4e" />
-<img width="1917" height="876" alt="Case2-no" src="https://github.com/user-attachments/assets/ed4f98e1-6df2-4f60-b8d2-2bd878813be0" />
 # ▶️ Running the Project
 
 Clone the repository
