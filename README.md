@@ -142,18 +142,6 @@ The workflow resumes and returns the final approval or rejection.
 
 # 📸 Screenshots
 
-Add your screenshots here.
-
-<<<<<<< HEAD
-- (<cli setup-adding adk skills.png>)
-- (<running adk web ui .png>)
-- (Case1.png)
-- (Case2-no.png)
-
----
-
-=======
->>>>>>> 7d8b0826f9cef315e21d71d9a514aa5484c8f152
 # ▶️ Running the Project
 
 Clone the repository
