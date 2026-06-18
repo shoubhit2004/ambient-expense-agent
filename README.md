@@ -144,10 +144,10 @@ The workflow resumes and returns the final approval or rejection.
 
 Add your screenshots here.
 
-- Home Screen
-- Auto Approval
-- Human Review
-- Final Approval / Rejection
+- (<cli setup-adding adk skills.png>)
+- (<running adk web ui .png>)
+- (Case1.png)
+- (Case2-no.png)
 
 ---
 
